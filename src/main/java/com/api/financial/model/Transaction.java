@@ -36,15 +36,7 @@ public class Transaction {
         return value;
     }
 
-    public void setValue(BigDecimal value) {
-        this.value = value;
-    }
-
     public OffsetDateTime getDateTime() {
         return dateTime;
-    }
-
-    public void setDateTime(OffsetDateTime dateTime) {
-        this.dateTime = dateTime;
     }
 }
