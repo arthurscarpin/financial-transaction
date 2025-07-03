@@ -1,6 +1,5 @@
-package com.api.financial.infra.exception;
+package com.api.financial.exception;
 
-import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;

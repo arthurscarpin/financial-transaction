@@ -2,8 +2,6 @@ package com.api.financial.model;
 
 import com.api.financial.dto.RegisterTransactionDto;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PastOrPresent;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
@@ -16,12 +14,9 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
     @Column(name = "valor")
     private BigDecimal value;
 
-    @NotNull
-    @PastOrPresent(message = "A data e o horário não podem ser futuros")
     @Column(name = "data_hora", nullable = false)
     private OffsetDateTime dateTime;
 
