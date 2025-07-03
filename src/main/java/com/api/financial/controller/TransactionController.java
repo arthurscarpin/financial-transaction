@@ -1,8 +1,11 @@
 package com.api.financial.controller;
 
 import com.api.financial.dto.RegisterTransactionDto;
+import com.api.financial.model.Transaction;
+import com.api.financial.repository.TransactionRepository;
 import jakarta.validation.Valid;
 import jakarta.validation.ValidationException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,11 +17,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/transacao")
 public class TransactionController {
 
+    @Autowired
+    private TransactionRepository repository;
+
     @PostMapping
     @Transactional
     public ResponseEntity<String> register(@RequestBody @Valid RegisterTransactionDto dto) {
         try {
-            // Implementar a regra de negócio
+            boolean alreadyRegistered = repository.existsByValueAndDateTime(dto.value(), dto.dateTime());
+            if (alreadyRegistered) {
+                throw new ValidationException("A transação já está cadastrada!");
+            }
+            repository.save(new Transaction(dto));
             return ResponseEntity.ok().build();
         } catch (ValidationException exception) {
             return ResponseEntity.badRequest().body(exception.getMessage());
