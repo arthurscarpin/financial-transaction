@@ -20,7 +20,7 @@ public class Transaction {
     private BigDecimal value;
 
     @NotNull
-    @PastOrPresent(message = "A data/hora não pode ser futura")
+    @PastOrPresent(message = "A data e o horário não podem ser futuros")
     @Column(name = "data_hora", nullable = false)
     private OffsetDateTime dateTime;
 
