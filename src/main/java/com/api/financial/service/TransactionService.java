@@ -14,10 +14,10 @@ public class TransactionService {
     private TransactionRepository repository;
 
     public void register(RegisterTransactionDto dto) {
-        boolean alreadyRegistered = repository.existsByValueAndDateTime(dto.value(), dto.dateTime());
-        if (alreadyRegistered) {
-            throw new ValidationException();
-        }
         repository.save(new Transaction(dto));
+    }
+
+    public void removeAll() {
+        repository.deleteAll();
     }
 }
