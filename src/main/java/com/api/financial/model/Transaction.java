@@ -1,5 +1,6 @@
 package com.api.financial.model;
 
+import com.api.financial.dto.RegisterTransactionDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
@@ -25,6 +26,11 @@ public class Transaction {
     private OffsetDateTime dateTime;
 
     public Transaction() {
+    }
+
+    public Transaction(RegisterTransactionDto dto) {
+        this.value = dto.value();
+        this.dateTime = dto.dateTime();
     }
 
     public Long getId() {
