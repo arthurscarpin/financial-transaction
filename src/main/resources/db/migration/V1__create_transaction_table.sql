@@ -1,0 +1,5 @@
+CREATE TABLE transacao (
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  valor DECIMAL(19, 2) NOT NULL,
+  data_hora DATETIME(6) NOT NULL
+);
