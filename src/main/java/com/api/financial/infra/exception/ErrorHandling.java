@@ -1,4 +1,4 @@
-package com.api.financial.exception;
+package com.api.financial.infra.exception;
 
 import com.api.financial.dto.MessageDto;
 import lombok.extern.slf4j.Slf4j;

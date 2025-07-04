@@ -1,4 +1,4 @@
-package com.api.financial.exception;
+package com.api.financial.infra.exception;
 
 public class CustomException extends RuntimeException {
 
