@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StopWatch;
 
 import java.time.OffsetDateTime;
 import java.util.DoubleSummaryStatistics;
@@ -22,6 +23,9 @@ public class StatisticsService {
     private TransactionRepository repository;
 
     public StatisticDto calculate(int seconds) {
+        StopWatch sw = new StopWatch();
+        sw.start();
+
         OffsetDateTime limit = OffsetDateTime.now().minusSeconds(seconds);
         log.info("Iniciando cálculo estatístico para os últimos {} segundos desde {}.", seconds, limit);
 
@@ -31,6 +35,9 @@ public class StatisticsService {
         DoubleSummaryStatistics statistics = values.stream()
                 .mapToDouble(t -> t.getValue().doubleValue())
                 .summaryStatistics();
+
+        sw.stop();
+        log.info("Cálculo concluído em {} ms.", sw.getTotalTimeMillis());
 
         if (statistics.getCount() == 0) {
             log.info("Nenhuma transação encontrada no intervalo.");
