@@ -11,12 +11,20 @@ spring:
     properties:
       hibernate:
         format_sql: true
-    server:
-      error:
-        include-stacktrace: never
-  logging:
-    level:
-      root: INFO
-      com.api.financial: DEBUG
-    pattern:
-      console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+server:
+  error:
+    include-stacktrace: never
+logging:
+  level:
+    root: INFO
+    com.api.financial: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  endpoint:
+    health:
+      show-details: always
