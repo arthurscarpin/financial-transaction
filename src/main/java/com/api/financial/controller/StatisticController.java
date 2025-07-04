@@ -2,6 +2,7 @@ package com.api.financial.controller;
 
 import com.api.financial.dto.StatisticDto;
 import com.api.financial.service.StatisticsService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -28,6 +28,12 @@ public class Transaction {
         this.dateTime = dto.dateTime();
     }
 
+    public Transaction(Long id, BigDecimal value, OffsetDateTime dateTime) {
+        this.id = id;
+        this.value = value;
+        this.dateTime = dateTime;
+    }
+
     public Long getId() {
         return id;
     }
