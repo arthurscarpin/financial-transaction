@@ -11,7 +11,7 @@ import java.time.OffsetDateTime;
 public record RegisterTransactionDto(
         @JsonProperty("valor")
         @NotNull(message = "O campo valor é obrigatório")
-        @DecimalMin(value = "0.00", inclusive = true, message = "O valor da transação deve ser igual ou maior que zero")
+        @DecimalMin(value = "0.01", inclusive = true, message = "O valor da transação deve ser maior que zero")
         BigDecimal value,
 
         @JsonProperty("dataHora")

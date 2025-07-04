@@ -4,6 +4,8 @@ import com.api.financial.dto.RegisterTransactionDto;
 import com.api.financial.service.TransactionService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -19,13 +21,13 @@ public class TransactionController {
     @Transactional
     public ResponseEntity<Void> register(@RequestBody @Valid RegisterTransactionDto dto) {
         service.register(dto);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @DeleteMapping
     @Transactional
     public ResponseEntity<Void> remove() {
         service.removeAll();
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 }
